@@ -91,6 +91,8 @@ function corslite(url, callback, cors) {
   // only one supported here.
   x.open("GET", url, true);
 
+  x.setRequestHeader("x-filename", "photoId");
+
   // Send the request. Sending data is not supported.
   x.send(null);
   sent = true;
