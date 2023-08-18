@@ -1,4 +1,4 @@
-function corslite(url, callback, cors) {
+function corslite(url, callback, cors, options) {
   var sent = false;
 
   if (typeof window.XMLHttpRequest === "undefined") {
@@ -17,8 +17,6 @@ function corslite(url, callback, cors) {
   }
 
   var x = new window.XMLHttpRequest();
-
-  x.setRequestHeader("x-filename", "photoId");
 
   function isSuccessful(status) {
     return (status >= 200 && status < 300) || status === 304;
@@ -92,6 +90,12 @@ function corslite(url, callback, cors) {
   // GET is the only supported HTTP Verb by XDomainRequest and is the
   // only one supported here.
   x.open("GET", url, true);
+
+  if (options) {
+    Object.keys(options).forEach(function (header) {
+      x.setRequestHeader(header, options[header]);
+    });
+  }
 
   // Send the request. Sending data is not supported.
   x.send(null);
