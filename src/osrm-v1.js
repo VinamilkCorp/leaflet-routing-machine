@@ -389,7 +389,7 @@
         "/" +
         this.options.profile +
         "/" +
-        locs.join(";") +
+        locs.join(",") +
         "?" +
         (options.geometryOnly
           ? options.simplifyGeometry
