@@ -133,7 +133,7 @@
           }
         }, this),
         true,
-        this.options
+        this.options.headers
       ));
     },
 
